@@ -1,0 +1,17 @@
+{
+  "name": "exchanger_widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm --filter ./packages/backend run start && pnpm --filter ./packages/frontend run start",
+    "build": "pnpm --filter ./packages/backend run build && pnpm --filter ./packages/frontend run build",
+    "test": "pnpm --filter ./packages/backend run test && pnpm --filter ./packages/frontend run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
