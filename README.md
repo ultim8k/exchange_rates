@@ -17,6 +17,7 @@ To start working on the app you need to have:
 - [Node.js](https://nodejs.org/en/)
 - [pnpm](https://pnpm.io/installation)
 - [Bun](https://bun.sh/)
+- [Redis](https://redis.io/)
 - [An API key from exchangeratesapi.io](https://exchangeratesapi.io)
 
 Once you have an api key from exchangeratesapi.io, you need to go to the `packages/backend` directory, copy the `.env.example` file as `.env` and add your api key to the `EXCHANGE_RATES_API_KEY` variable.
@@ -36,6 +37,7 @@ You can view the app at [http://localhost:5173](http://localhost:5173) (Backend 
 To build the app for production you will need to have:
 
 - [Docker](https://www.docker.com/)
+- [Redis](https://redis.io/) (Not required if you use docker-compose)
 - [An API key from exchangeratesapi.io](https://exchangeratesapi.io)
 
 Once you have an api key from exchangeratesapi.io, you need to go to the `packages/backend` directory, copy the `.env.docker` file as `.env` and add your api key to the `EXCHANGE_RATES_API_KEY` variable.
@@ -51,6 +53,7 @@ This will build the docker image.
 Then you can run the following command to start the app:
 
 ```sh
+redis-server &
 docker run --env-file ./packages/backend/.env.docker -p 3000:3000 --rm -it $(docker build -q .)
 ```
 

@@ -21,7 +21,7 @@ export const getExchangeRates = async ({
     exchangeratesApiIsNotFreeTier ? { ...paramsBase, baseCurrency } : paramsBase
   );
 
-  // @ts-ignore
+  // @ts-ignore fetch type definition is missing in Node.js
   const response = await fetch(
     `${exchangeratesApiUrl}${exchangeratesApiRatesEndpoint}?${params.toString()}`
   );

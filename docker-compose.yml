@@ -1,15 +1,21 @@
-version: "3.3"
+version: "3.8"
 services:
   exchange-app:
     image: exchange-app
     environment:
       - FRONTEND_DIST_PATH=/usr/src/dist/public_html
+      - REDIS_CONNECTION_STRING=redis://cache:6379
       - EXCHANGERATES_API_KEY=__YOUR_API_KEY__
-      - EXCHANGERATES_API_URL=http://api.exchangeratesapi.io/v1
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    # depends_on:
-    #   - redis
+    depends_on:
+      - cache
+  cache:
+    image: redis:7.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server

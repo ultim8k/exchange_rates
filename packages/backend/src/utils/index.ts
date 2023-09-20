@@ -1,27 +1,14 @@
-interface RatesResponse {
-  success: boolean;
-  timestamp: number;
-  base: string;
-  date: string;
-  rates: {
-    [key: string]: number;
-  };
-}
-
-interface FormatedRatesResponse {
-  base: string;
-  rates: {
-    currencyCode: string;
-    rateValue: number;
-  }[];
-  lastUpdated: string;
-}
+import { baseCurrency, comparedCurrencies } from "../config/index.js";
+import {
+  ExchangeRatesAPIRatesResponse,
+  RatesResponse,
+} from "../types/index.js";
 
 export const formatRatesResponse = ({
   base,
   rates: rawRates,
-  timestamp,
-}: RatesResponse): FormatedRatesResponse => {
+  date,
+}: ExchangeRatesAPIRatesResponse): RatesResponse => {
   const rates = Object.entries(rawRates).map(([currencyCode, rateValue]) => ({
     currencyCode,
     rateValue,
@@ -30,6 +17,11 @@ export const formatRatesResponse = ({
   return {
     base,
     rates,
-    lastUpdated: new Date(timestamp).toISOString(),
+    lastUpdated: new Date(date).toISOString(),
   };
 };
+
+export const getKeyFromParams = (
+  base: string = baseCurrency,
+  compared: string = comparedCurrencies
+) => `rates-${base}-${compared}`;

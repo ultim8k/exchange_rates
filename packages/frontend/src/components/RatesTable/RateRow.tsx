@@ -1,6 +1,6 @@
-import { currenciesDictionary } from "../constants";
-import { Rate } from "../types";
-import { FlagIcon } from "./FlagIcon";
+import { currenciesDictionary } from "../../constants";
+import { Rate } from "../../types";
+import { FlagIcon } from "../FlagIcon";
 
 export const RateRow = ({ currencyCode, rateValue }: Rate) => {
   const { flag, name: currencyName } = currenciesDictionary[currencyCode] || {};

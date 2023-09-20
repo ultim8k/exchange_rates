@@ -5,39 +5,6 @@
   text-align: center;
 }
 
-
-.rates-table {
-  min-width: 260px;
-  margin: 0 auto;
-  text-align: left;
-  padding: 4px;
-  border: 1px solid green;
-}
-
-.rates-table thead, .rates-table__header {
-  margin-bottom: 1rem;
-}
-
-.rates-table .base-currency {
-  font-weight: bold;
-  text-align: right;
-}
-
-.rates-table caption {
-  background-color: green;
-  padding: 5px;
-  font-weight: bold;
-  text-align: left;
-}
-
-.rates-table td {
-  padding: 2px;
-}
-
-.rates-table tfoot {
-  text-align: right;
-}
-
 .☺️ {
   position: absolute;
   top: 0;
