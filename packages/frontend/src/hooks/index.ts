@@ -1,10 +1,10 @@
 import useSWR from "swr";
 import { ratesFetcher } from "../utils";
 import { RatesData } from "../types";
+import { envBackendEndpoint, envRefreshIntervalMilliseconds } from "../config";
 
-const url = import.meta.env.VITE_BACKEND_ENDPOINT || "";
-const refreshInterval =
-  import.meta.env.VITE_REFRESH_INTERVAL_MILLISECONDS || 1000 * 60;
+const url = envBackendEndpoint;
+const refreshInterval = envRefreshIntervalMilliseconds;
 
 interface UseExchangeRatesOptions {
   autoRefresh?: boolean;

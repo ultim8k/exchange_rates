@@ -7,12 +7,13 @@ import { FlagIcon } from "../FlagIcon";
 import { RateRow } from "./RateRow";
 
 import "./RatesTable.css";
+import {
+  envBaseCurrencyCode,
+  envRefreshIntervalMilliseconds,
+} from "../../config";
 
-const baseCurrencyCode: CurrencyCode =
-  import.meta.env.VITE_BASE_CURRENCY_CODE || "GBP";
-
-const refreshInterval =
-  import.meta.env.VITE_REFRESH_INTERVAL_MILLISECONDS || 1000 * 60;
+const baseCurrencyCode: CurrencyCode = envBaseCurrencyCode;
+const refreshInterval: number = envRefreshIntervalMilliseconds;
 
 const RatesTable = () => {
   const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] =

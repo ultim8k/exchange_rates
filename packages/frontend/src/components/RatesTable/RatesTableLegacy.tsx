@@ -5,15 +5,17 @@ import { FlagIcon } from "../FlagIcon";
 import { type RatesData, type CurrencyCode } from "../../types";
 import { RateRow } from "./RateRow";
 import { getDateAsDDMMMMYYYY } from "../../utils";
+import {
+  envBackendEndpoint,
+  envBaseCurrencyCode,
+  envRefreshIntervalMilliseconds,
+} from "../../config";
 
-const baseCurrencyCode: CurrencyCode =
-  import.meta.env.VITE_BASE_CURRENCY_CODE || "GBP";
-
-const refreshInterval =
-  import.meta.env.VITE_REFRESH_INTERVAL_MILLISECONDS || 1000 * 60;
+const baseCurrencyCode: CurrencyCode = envBaseCurrencyCode;
+const refreshInterval = envRefreshIntervalMilliseconds;
+const enpoint: string = envBackendEndpoint;
 
 const fetchRates = async (): Promise<RatesData> => {
-  const enpoint = import.meta.env.VITE_BACKEND_ENDPOINT;
   return await fetch(enpoint).then((res) => res.json());
 };
 
