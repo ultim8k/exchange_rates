@@ -8,7 +8,9 @@ It is written in TypeScript and uses React + Vite on the frontend & Node.js + Ex
 
 The exchange rate data come from [exchangeratesapi.io](https://exchangeratesapi.io).
 
-## How to run
+>**Important Note**: The free plan of `exchangeratesapi.io` doesn't allow specifying currency in the request The default is `EUR`. Also it doesn't allow `https` but only plain `http`.
+
+## How to run locally
 
 ### Prerequisites
 
@@ -34,6 +36,26 @@ You can view the app at [http://localhost:5173](http://localhost:5173) (Backend 
 
 ## How to run for production
 
+### Using Docker Compose (Recommended)
+
+Simply add your api key to the `EXCHANGE_RATES_API_KEY` variable in the `docker-compose.yml` file and run the following command:
+
+```sh
+docker-compose up --build
+```
+
+This will build and run the app.
+
+>**Important Note**: In some machines *Docker BuilKit* is not enabled by default.
+If you get an error while building the image, you can try to enable it by setting the following environment variables before running `docker-compose`:
+
+```sh
+export DOCKER_BUILDKIT=1 # or configure in daemon.json
+export COMPOSE_DOCKER_CLI_BUILD=1
+```
+
+### Using Docker run
+
 To build the app for production you will need to have:
 
 - [Docker](https://www.docker.com/)
@@ -57,12 +79,9 @@ redis-server &
 docker run --env-file ./packages/backend/.env.docker -p 3000:3000 --rm -it $(docker build -q .)
 ```
 
-An alternative to docker run is to use docker-compose.
-
-Simply add your api key to the `EXCHANGE_RATES_API_KEY` variable in the `docker-compose.yml` file and run the following command:
+>**Important Note**: In some machines *Docker BuilKit* is not enabled by default.
+If you get an error while building the image, you can try to enable it by setting the following environment variables before running `docker buld`:
 
 ```sh
-docker-compose up --build
+export DOCKER_BUILDKIT=1 # or configure in daemon.json
 ```
-
-This will build and run the app.
