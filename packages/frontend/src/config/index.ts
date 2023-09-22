@@ -1,5 +1,5 @@
 export const envBackendEndpoint =
-  import.meta.env.VITE_BACKEND_ENDPOINT || "http://localhost:3000/rates";
+  import.meta.env.VITE_BACKEND_ENDPOINT || "/rates";
 export const envBaseCurrencyCode =
   import.meta.env.VITE_BASE_CURRENCY_CODE || "EUR";
 export const envRefreshIntervalMilliseconds =
