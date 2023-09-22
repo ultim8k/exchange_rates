@@ -8,8 +8,9 @@ export const exchangeratesApiIsNotFreeTier =
   process.env.EXCHANGERATES_API_IS_NOT_FREE_TIER || false;
 
 // Default currency exhcange options
-export const baseCurrency = process.env.BASE_CURRENCY || "GBP";
-export const comparedCurrencies = process.env.COMPARED_CURRENCIES || "USD,EUR";
+export const baseCurrency = process.env.BASE_CURRENCY || "EUR";
+export const comparedCurrencies =
+  process.env.COMPARED_CURRENCIES || "USD,GBP,CHF,AUD,CAD";
 
 // Backend sever port
 export const port = process.env.PORT || 3000;
